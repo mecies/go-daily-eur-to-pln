@@ -14,8 +14,10 @@ type EmailParams struct {
 }
 
 func AuthenticateEmail() smtp.Auth {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("error loading .env file:", err)
+	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT"); !exists {
+		if err := godotenv.Load(); err != nil {
+			log.Fatal("error loading .env file:", err)
+		}
 	}
 
 	// Configuration
@@ -32,6 +34,13 @@ func AuthenticateEmail() smtp.Auth {
 func SendEmail(params EmailParams) {
 
 	auth := AuthenticateEmail()
+
+	if _, exists := os.LookupEnv("RAILWAY_ENVIRONMENT"); !exists {
+		if err := godotenv.Load(); err != nil {
+			log.Fatal("error loading .env file:", err)
+		}
+	}
+
 	addr := os.Getenv("EMAIL_HOST") + ":" + os.Getenv("EMAIL_PORT")
 	sender := os.Getenv("EMAIL_SENDER")
 	receivers := []string{os.Getenv("EMAIL_RECEIVER")}
@@ -53,5 +62,7 @@ func SendEmail(params EmailParams) {
 
 	if err != nil {
 		log.Fatal(err)
+	} else {
+		log.Println("Email sent!")
 	}
 }

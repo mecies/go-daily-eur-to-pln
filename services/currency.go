@@ -2,7 +2,6 @@ package services
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -22,8 +21,10 @@ func GetEuroToPlnExchangeRate() float64 {
 	response, err := http.Get("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.min.json")
 
 	if err != nil {
-		fmt.Print(err.Error())
+		log.Fatal(err)
 		os.Exit(1)
+	} else {
+		log.Println("Fetched currency!")
 	}
 
 	responseData, err := io.ReadAll(response.Body)

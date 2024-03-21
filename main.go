@@ -2,6 +2,7 @@ package main
 
 import (
 	"go-30/daily-euro-to-pln/services"
+	"log"
 	"strconv"
 	"time"
 
@@ -13,6 +14,8 @@ func main() {
 
 	// Runs Every day at 8
 	cronScheduler.AddFunc("0 8 * * *", func() {
+		log.Println("Executing job!")
+
 		euroToPlnExhangeRate := services.GetEuroToPlnExchangeRate()
 		euroToPlnExhangeRateString := strconv.FormatFloat(euroToPlnExhangeRate, 'f', -1, 64)
 
