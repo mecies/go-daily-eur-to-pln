@@ -28,11 +28,11 @@ func main() {
 
 	// Start the Cron job scheduler
 	cronScheduler.Start()
-
 	log.Println("Scheduler started!")
 
-	// Run for 292 years 8)
-	time.Sleep(time.Duration(1<<63 - 1))
+	// Defer stop
+	defer cronScheduler.Stop()
 
-	cronScheduler.Stop()
+	// Run the program indefinitely
+	select {}
 }
