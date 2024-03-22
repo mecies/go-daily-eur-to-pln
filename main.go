@@ -11,8 +11,8 @@ import (
 func main() {
 	cronScheduler := cron.New()
 
-	// Runs Every day at 8
-	cronScheduler.AddFunc("0 8 * * *", func() {
+	// Runs Every day at 14
+	cronScheduler.AddFunc("0 14 * * *", func() {
 		log.Println("Executing job!")
 
 		euroToPlnExhangeRate := services.GetEuroToPlnExchangeRate()
