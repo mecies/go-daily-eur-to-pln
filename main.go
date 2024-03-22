@@ -4,7 +4,6 @@ import (
 	"go-30/daily-euro-to-pln/services"
 	"log"
 	"strconv"
-	"time"
 
 	"github.com/robfig/cron"
 )
