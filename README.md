@@ -40,4 +40,4 @@ This project is a cron job written in Go that runs every day at 2 PM UTC. It che
    
 ## License 📜
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the do-whatever-you-want license
