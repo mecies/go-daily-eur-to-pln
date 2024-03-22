@@ -1,6 +1,6 @@
 # Daily EUR to PLN 🤑
 
-This project is a cron job written in Go that runs every day at 8 AM UTC. It checks the exchange rate of EUR to PLN and sends an email notification to a specified receiver.
+This project is a cron job written in Go that runs every day at 2 PM UTC. It checks the exchange rate of EUR to PLN and sends an email notification to a specified receiver.
 
 ## Features 🚀
 
